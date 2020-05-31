@@ -1,0 +1,24 @@
+class Solution {
+	
+public String removeDuplicates(String S) {
+	
+	StringBuilder sb = new StringBuilder();
+	LinkedList <Character> stack = new LinkedList<>();
+	
+	for(char ch : S.toCharArray()) {
+		if(!stack.isEmpty() && stack.peek() != ch){
+			stack.addFirst(ch);
+		}else if (!stack.isEmpty() && stack.peek() == ch){
+			stack.pop();
+		}else{
+			stack.add(ch);
+		}
+	}
+	
+	while(!stack.isEmpty())
+		sb.append(stack.pop());
+	
+	sb.reverse();
+	return sb.toString();
+	}
+}
